@@ -1,0 +1,785 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/werk85/node-html-to-text">html-to-text (v3.2.0)</a>
+</h1>
+<h4>Advanced html to plain text converter</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.html-to-text">module html-to-text</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.fromFile">
+            function <span class="apidocSignatureSpan">html-to-text.</span>fromFile
+            <span class="apidocSignatureSpan">(file, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.fromString">
+            function <span class="apidocSignatureSpan">html-to-text.</span>fromString
+            <span class="apidocSignatureSpan">(str, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">html-to-text.</span>formatter</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">html-to-text.</span>helper</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.html-to-text.formatter">module html-to-text.formatter</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.formatter.anchor">
+            function <span class="apidocSignatureSpan">html-to-text.formatter.</span>anchor
+            <span class="apidocSignatureSpan">(elem, fn, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.formatter.heading">
+            function <span class="apidocSignatureSpan">html-to-text.formatter.</span>heading
+            <span class="apidocSignatureSpan">(elem, fn, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.formatter.horizontalLine">
+            function <span class="apidocSignatureSpan">html-to-text.formatter.</span>horizontalLine
+            <span class="apidocSignatureSpan">(elem, fn, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.formatter.image">
+            function <span class="apidocSignatureSpan">html-to-text.formatter.</span>image
+            <span class="apidocSignatureSpan">(elem, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.formatter.lineBreak">
+            function <span class="apidocSignatureSpan">html-to-text.formatter.</span>lineBreak
+            <span class="apidocSignatureSpan">(elem, fn, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.formatter.listItem">
+            function <span class="apidocSignatureSpan">html-to-text.formatter.</span>listItem
+            <span class="apidocSignatureSpan">(prefix, elem, fn, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.formatter.orderedList">
+            function <span class="apidocSignatureSpan">html-to-text.formatter.</span>orderedList
+            <span class="apidocSignatureSpan">(elem, fn, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.formatter.paragraph">
+            function <span class="apidocSignatureSpan">html-to-text.formatter.</span>paragraph
+            <span class="apidocSignatureSpan">(elem, fn, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.formatter.table">
+            function <span class="apidocSignatureSpan">html-to-text.formatter.</span>table
+            <span class="apidocSignatureSpan">(elem, fn, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.formatter.text">
+            function <span class="apidocSignatureSpan">html-to-text.formatter.</span>text
+            <span class="apidocSignatureSpan">(elem, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.formatter.unorderedList">
+            function <span class="apidocSignatureSpan">html-to-text.formatter.</span>unorderedList
+            <span class="apidocSignatureSpan">(elem, fn, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.html-to-text.helper">module html-to-text.helper</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.helper.arrayZip">
+            function <span class="apidocSignatureSpan">html-to-text.helper.</span>arrayZip
+            <span class="apidocSignatureSpan">(array)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.helper.splitCssSearchTag">
+            function <span class="apidocSignatureSpan">html-to-text.helper.</span>splitCssSearchTag
+            <span class="apidocSignatureSpan">(tagString)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.helper.wordwrap">
+            function <span class="apidocSignatureSpan">html-to-text.helper.</span>wordwrap
+            <span class="apidocSignatureSpan">(text, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.html-to-text" id="apidoc.module.html-to-text">module html-to-text</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.fromFile" id="apidoc.element.html-to-text.fromFile">
+        function <span class="apidocSignatureSpan">html-to-text.</span>fromFile
+        <span class="apidocSignatureSpan">(file, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fromFile = function (file, options, callback) {
+  if (!callback) {
+    callback = options;
+    options = {};
+  }
+  fs.readFile(file, 'utf8', function (err, str) {
+    if (err) return callback(err);
+    return callback(null, htmlToText(str, options));
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## Usage
+You can read from a file via:
+
+```javascript
+var htmlToText = require('html-to-text');
+
+htmlToText.<span class="apidocCodeKeywordSpan">fromFile</span>(path.join(__dirname, 'test.html'), {
+	tables: ['#invoice', '.address']
+}, (err, text) =&gt; {
+	if (err) return console.error(err);
+	console.log(text);
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.fromString" id="apidoc.element.html-to-text.fromString">
+        function <span class="apidocSignatureSpan">html-to-text.</span>fromString
+        <span class="apidocSignatureSpan">(str, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fromString = function (str, options) {
+  return htmlToText(str, options || {});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+or directly from a string:
+
+```javascript
+var htmlToText = require('html-to-text');
+
+var text = htmlToText.<span class="apidocCodeKeywordSpan">fromString</span>('&lt;h1&gt;Hello World&lt;/h1&gt;', {
+	wordwrap: 130
+});
+console.log(text);
+```
+
+### Options:
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.html-to-text.formatter" id="apidoc.module.html-to-text.formatter">module html-to-text.formatter</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.formatter.anchor" id="apidoc.element.html-to-text.formatter.anchor">
+        function <span class="apidocSignatureSpan">html-to-text.formatter.</span>anchor
+        <span class="apidocSignatureSpan">(elem, fn, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatAnchor(elem, fn, options) {
+  var href = '';
+  // Always get the anchor text
+  var storedCharCount = options.lineCharCount;
+  var text = fn(elem.children || [], options);
+  if (!text) {
+    text = '';
+  }
+
+  var result = elem.trimLeadingSpace ? _s.lstrip(text) : text;
+
+  if (!options.ignoreHref) {
+    // Get the href, if present
+    if (elem.attribs &amp;&amp; elem.attribs.href) {
+      href = elem.attribs.href.replace(/^mailto\:/, '');
+    }
+    if (href) {
+      if (options.linkHrefBaseUrl &amp;&amp; href.indexOf('/') === 0) {
+        href = options.linkHrefBaseUrl + href;
+      }
+      if (!options.hideLinkHrefIfSameAsText || href !== _s.replaceAll(result, '\n', '')) {
+        if (!options.noLinkBrackets) {
+          result += ' [' + href + ']';
+        } else {
+          result += ' ' + href;
+        }
+      }
+    }
+  }
+
+  options.lineCharCount = storedCharCount;
+
+  return formatText({ data: result || href, trimLeadingSpace: elem.trimLeadingSpace }, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.formatter.heading" id="apidoc.element.html-to-text.formatter.heading">
+        function <span class="apidocSignatureSpan">html-to-text.formatter.</span>heading
+        <span class="apidocSignatureSpan">(elem, fn, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatHeading(elem, fn, options) {
+  var heading = fn(elem.children, options);
+  if (options.uppercaseHeadings) {
+    heading = heading.toUpperCase();
+  }
+  return heading + '\n';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.formatter.horizontalLine" id="apidoc.element.html-to-text.formatter.horizontalLine">
+        function <span class="apidocSignatureSpan">html-to-text.formatter.</span>horizontalLine
+        <span class="apidocSignatureSpan">(elem, fn, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatHorizontalLine(elem, fn, options) {
+  return '\n' + _s.repeat('-', options.wordwrap) + '\n\n';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.formatter.image" id="apidoc.element.html-to-text.formatter.image">
+        function <span class="apidocSignatureSpan">html-to-text.formatter.</span>image
+        <span class="apidocSignatureSpan">(elem, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatImage(elem, options) {
+  if (options.ignoreImage) {
+    return '';
+  }
+
+  var result = '', attribs = elem.attribs || {};
+  if (attribs.alt) {
+    result += he.decode(attribs.alt, options.decodeOptions);
+    if (attribs.src) {
+      result += ' ';
+    }
+  }
+  if (attribs.src) {
+    result += '[' + attribs.src + ']';
+  }
+  return (result);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.formatter.lineBreak" id="apidoc.element.html-to-text.formatter.lineBreak">
+        function <span class="apidocSignatureSpan">html-to-text.formatter.</span>lineBreak
+        <span class="apidocSignatureSpan">(elem, fn, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatLineBreak(elem, fn, options) {
+  return '\n' + fn(elem.children, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.formatter.listItem" id="apidoc.element.html-to-text.formatter.listItem">
+        function <span class="apidocSignatureSpan">html-to-text.formatter.</span>listItem
+        <span class="apidocSignatureSpan">(prefix, elem, fn, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatListItem(prefix, elem, fn, options) {
+  options = _.clone(options);
+  // Reduce the wordwrap for sub elements.
+  if (options.wordwrap) {
+    options.wordwrap -= prefix.length;
+  }
+  // Process sub elements.
+  var text = fn(elem.children, options);
+  // Replace all line breaks with line break + prefix spacing.
+  text = text.replace(/\n/g, '\n' + _s.repeat(' ', prefix.length));
+  // Add first prefix and line break at the end.
+  return prefix + text + '\n';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.formatter.orderedList" id="apidoc.element.html-to-text.formatter.orderedList">
+        function <span class="apidocSignatureSpan">html-to-text.formatter.</span>orderedList
+        <span class="apidocSignatureSpan">(elem, fn, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatOrderedList(elem, fn, options) {
+  var result = '';
+  var nonWhiteSpaceChildren = (elem.children || []).filter(function(child) {
+    return child.type !== 'text' || !whiteSpaceRegex.test(child.data);
+  });
+  // Return different functions for different OL types
+  var typeFunctions = {
+    1: function(start, i) { return i + 1 + start},
+    a: function(start, i) { return String.fromCharCode(i + start + 97)},
+    A: function(start, i) { return String.fromCharCode(i + start + 65)}
+  };
+  // Determine type
+  var olType = elem.attribs.type || '1'
+  // Make sure there are list items present
+  if (nonWhiteSpaceChildren.length) {
+    // Calculate initial start from ol attribute
+    var start = Number(elem.attribs.start || '1') - 1
+    // Calculate the maximum length to i.
+    var maxLength = (nonWhiteSpaceChildren.length + start).toString().length;
+    _.each(nonWhiteSpaceChildren, function(elem, i) {
+      // Use different function depending on type
+      var index = typeFunctions[olType](start, i);
+      // Calculate the needed spacing for nice indentation.
+      var spacing = maxLength - index.toString().length;
+      var prefix = (olType === '1') ? ' ' + index + '. ' + _s.repeat(' ', spacing) : index + '. ';
+      result += formatListItem(prefix, elem, fn, options);
+    });
+  }
+  return result + '\n';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.formatter.paragraph" id="apidoc.element.html-to-text.formatter.paragraph">
+        function <span class="apidocSignatureSpan">html-to-text.formatter.</span>paragraph
+        <span class="apidocSignatureSpan">(elem, fn, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatParagraph(elem, fn, options) {
+  var paragraph = fn(elem.children, options)
+  if (options.singleNewLineParagraphs) {
+    return paragraph + '\n'
+  } else {
+    return paragraph + '\n\n'
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.formatter.table" id="apidoc.element.html-to-text.formatter.table">
+        function <span class="apidocSignatureSpan">html-to-text.formatter.</span>table
+        <span class="apidocSignatureSpan">(elem, fn, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatTable(elem, fn, options) {
+  var table = [];
+  _.each(elem.children, tryParseRows);
+  return tableToString(table);
+
+  function tryParseRows(elem) {
+    if (elem.type !== 'tag') {
+      return;
+    }
+    switch (elem.name.toLowerCase()) {
+      case "thead":
+      case "tbody":
+      case "tfoot":
+      case "center":
+        _.each(elem.children, tryParseRows);
+        return;
+
+      case 'tr':
+        var rows = [];
+        _.each(elem.children, function(elem) {
+          var tokens, times;
+          if (elem.type === 'tag') {
+            switch (elem.name.toLowerCase()) {
+              case 'th':
+                tokens = formatHeading(elem, fn, options).split('\n');
+                rows.push(_.compact(tokens));
+                break;
+
+              case 'td':
+                tokens = fn(elem.children, options).split('\n');
+                rows.push(_.compact(tokens));
+                // Fill colspans with empty values
+                if (elem.attribs &amp;&amp; elem.attribs.colspan) {
+                  times = elem.attribs.colspan - 1 || 0;
+                  _.times(times, function() {
+                    rows.push(['']);
+                  });
+                }
+                break;
+            }
+          }
+        });
+        rows = helper.arrayZip(rows);
+        _.each(rows, function(row) {
+          row = _.map(row, function(col) {
+            return col || '';
+          });
+          table.push(row);
+        });
+        break;
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.formatter.text" id="apidoc.element.html-to-text.formatter.text">
+        function <span class="apidocSignatureSpan">html-to-text.formatter.</span>text
+        <span class="apidocSignatureSpan">(elem, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatText(elem, options) {
+  var text = elem.data || "";
+  text = he.decode(text, options.decodeOptions);
+
+  if (options.isInPre) {
+    return text;
+  } else {
+    return helper.wordwrap(elem.trimLeadingSpace ? _s.lstrip(text) : text, options);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.formatter.unorderedList" id="apidoc.element.html-to-text.formatter.unorderedList">
+        function <span class="apidocSignatureSpan">html-to-text.formatter.</span>unorderedList
+        <span class="apidocSignatureSpan">(elem, fn, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatUnorderedList(elem, fn, options) {
+  var result = '';
+  var nonWhiteSpaceChildren = (elem.children || []).filter(function(child) {
+    return child.type !== 'text' || !whiteSpaceRegex.test(child.data);
+  });
+  _.each(nonWhiteSpaceChildren, function(elem) {
+    result += formatListItem(' * ', elem, fn, options);
+  });
+  return result + '\n';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.html-to-text.helper" id="apidoc.module.html-to-text.helper">module html-to-text.helper</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.helper.arrayZip" id="apidoc.element.html-to-text.helper.arrayZip">
+        function <span class="apidocSignatureSpan">html-to-text.helper.</span>arrayZip
+        <span class="apidocSignatureSpan">(array)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function arrayZip(array) {
+  return _.zip.apply(_, array);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Convert all rows to lengths
+var widths = _.map(table, function(row) {
+  return _.map(row, function(col) {
+    return col.length;
+  });
+});
+// Invert rows with colums
+widths = helper.<span class="apidocCodeKeywordSpan">arrayZip</span>(widths);
+// Determine the max values for each column
+widths = _.map(widths, function(col) {
+  return _.max(col);
+});
+
+// Build the table
+var text = '';
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.helper.splitCssSearchTag" id="apidoc.element.html-to-text.helper.splitCssSearchTag">
+        function <span class="apidocSignatureSpan">html-to-text.helper.</span>splitCssSearchTag
+        <span class="apidocSignatureSpan">(tagString)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function splitCssSearchTag(tagString) {
+  function getParams(re, string) {
+    var captures = [], found;
+    while ((found = re.exec(string)) !== null) {
+      captures.push(found[1]);
+    }
+    return captures;
+  }
+
+  var splitTag = {};
+  var elementRe = /(^\w*)/g;
+  splitTag.element = elementRe.exec(tagString)[1];
+  splitTag.classes = getParams( /\.([\d\w-]*)/g, tagString);
+  splitTag.ids = getParams( /#([\d\w-]*)/g, tagString);
+
+  return splitTag;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.helper.wordwrap" id="apidoc.element.html-to-text.helper.wordwrap">
+        function <span class="apidocSignatureSpan">html-to-text.helper.</span>wordwrap
+        <span class="apidocSignatureSpan">(text, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function wordwrap(text, options) {
+  var max = options.wordwrap;
+  var preserveNewlines = options.preserveNewlines;
+  var length = options.lineCharCount;
+
+  // Preserve leading space
+  var result = _s.startsWith(text, ' ') ? ' ' : '';
+  length += result.length;
+  var buffer = [];
+  // Split the text into words, decide to preserve new lines or not.
+  var words = preserveNewlines
+    ? text.replace(/\n/g, '\n ').split(/\ +/)
+    : _s.words(text);
+
+  // Determine where to end line word by word.
+  _.each(words, function(word) {
+    // Add buffer to result if we can't fit any more words in the buffer.
+    if ((max || max === 0) &amp;&amp; length &gt; 0 &amp;&amp; ((length + word.length &gt; max) || (length + word.indexOf('\n') &gt; max))) {
+      // Concat buffer and add it to the result
+      result += buffer.join(' ') + '\n';
+      // Reset buffer and length
+      buffer.length = length = 0;
+    }
+
+    // Check if the current word is long enough to be wrapped
+    if ((max || max === 0) &amp;&amp; (options.longWordSplit) &amp;&amp; (word.length &gt; max)) {
+      word = splitLongWord(word, options);
+    }
+
+    buffer.push(word);
+
+    // If the word contains a newline then restart the count and add the buffer to the result
+    if (word.indexOf('\n') !== -1) {
+      result += buffer.join(' ');
+
+      // Reset the buffer, let the length include any characters after the last newline
+      buffer.length = 0;
+      length = word.length - (word.lastIndexOf('\n') + 1);
+      // If there are characters after the newline, add a space and increase the length by 1
+      if (length) {
+        result += ' ';
+        length++;
+      }
+    } else {
+      // Add word length + one whitespace
+      length += word.length + 1;
+    }
+  });
+  // Add the rest to the result.
+  result += buffer.join(' ');
+
+  // Preserve trailing space
+  if (!_s.endsWith(text, ' ')) {
+    result = _s.rtrim(result);
+  } else if (!_s.endsWith(result, ' ')) {
+    result = result + ' ';
+  }
+
+  return result;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+function formatText(elem, options) {
+var text = elem.data || "";
+text = he.decode(text, options.decodeOptions);
+
+if (options.isInPre) {
+  return text;
+} else {
+  return helper.<span class="apidocCodeKeywordSpan">wordwrap</span>(elem.trimLeadingSpace ? _s.lstrip(text) : text, options);
+}
+}
+
+function formatImage(elem, options) {
+if (options.ignoreImage) {
+  return '';
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
