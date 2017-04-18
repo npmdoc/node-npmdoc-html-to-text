@@ -189,6 +189,32 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.html-to-text.fromFile">module html-to-text.fromFile</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.fromFile.fromFile">
+            function <span class="apidocSignatureSpan">html-to-text.</span>fromFile
+            <span class="apidocSignatureSpan">(file, options, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.html-to-text.fromString">module html-to-text.fromString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.fromString.fromString">
+            function <span class="apidocSignatureSpan">html-to-text.</span>fromString
+            <span class="apidocSignatureSpan">(str, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
     <li class="apidocModuleLi"><a href="#apidoc.module.html-to-text.helper">module html-to-text.helper</a><ol>
 
         <li>
@@ -618,6 +644,83 @@ console.log(text);
   return result + '\n';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.html-to-text.fromFile" id="apidoc.module.html-to-text.fromFile">module html-to-text.fromFile</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.fromFile.fromFile" id="apidoc.element.html-to-text.fromFile.fromFile">
+        function <span class="apidocSignatureSpan">html-to-text.</span>fromFile
+        <span class="apidocSignatureSpan">(file, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fromFile = function (file, options, callback) {
+  if (!callback) {
+    callback = options;
+    options = {};
+  }
+  fs.readFile(file, 'utf8', function (err, str) {
+    if (err) return callback(err);
+    return callback(null, htmlToText(str, options));
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## Usage
+You can read from a file via:
+
+```javascript
+var htmlToText = require('html-to-text');
+
+htmlToText.<span class="apidocCodeKeywordSpan">fromFile</span>(path.join(__dirname, 'test.html'), {
+	tables: ['#invoice', '.address']
+}, (err, text) =&gt; {
+	if (err) return console.error(err);
+	console.log(text);
+});
+```
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.html-to-text.fromString" id="apidoc.module.html-to-text.fromString">module html-to-text.fromString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.fromString.fromString" id="apidoc.element.html-to-text.fromString.fromString">
+        function <span class="apidocSignatureSpan">html-to-text.</span>fromString
+        <span class="apidocSignatureSpan">(str, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fromString = function (str, options) {
+  return htmlToText(str, options || {});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+or directly from a string:
+
+```javascript
+var htmlToText = require('html-to-text');
+
+var text = htmlToText.<span class="apidocCodeKeywordSpan">fromString</span>('&lt;h1&gt;Hello World&lt;/h1&gt;', {
+	wordwrap: 130
+});
+console.log(text);
+```
+
+### Options:
+...</pre></li>
     </ul>
 
 
