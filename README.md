@@ -1,6 +1,6 @@
 # npmdoc-html-to-text
 
-#### api documentation for  [html-to-text (v3.2.0)](https://github.com/werk85/node-html-to-text)  [![npm package](https://img.shields.io/npm/v/npmdoc-html-to-text.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-html-to-text) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-html-to-text.svg)](https://travis-ci.org/npmdoc/node-npmdoc-html-to-text)
+#### basic api documentation for  [html-to-text (v3.2.0)](https://github.com/werk85/node-html-to-text)  [![npm package](https://img.shields.io/npm/v/npmdoc-html-to-text.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-html-to-text) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-html-to-text.svg)](https://travis-ci.org/npmdoc/node-npmdoc-html-to-text)
 
 #### Advanced html to plain text converter
 
