@@ -84,6 +84,12 @@
 
         </li>
 
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">html-to-text.</span>html_to_text</span>
+
+        </li>
+
     </ol></li>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.html-to-text.formatter">module html-to-text.formatter</a><ol>
@@ -189,32 +195,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.html-to-text.fromFile">module html-to-text.fromFile</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.fromFile.fromFile">
-            function <span class="apidocSignatureSpan">html-to-text.</span>fromFile
-            <span class="apidocSignatureSpan">(file, options, callback)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.html-to-text.fromString">module html-to-text.fromString</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.fromString.fromString">
-            function <span class="apidocSignatureSpan">html-to-text.</span>fromString
-            <span class="apidocSignatureSpan">(str, options)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
     <li class="apidocModuleLi"><a href="#apidoc.module.html-to-text.helper">module html-to-text.helper</a><ol>
 
         <li>
@@ -240,6 +220,28 @@
             <a class="apidocElementLiA" href="#apidoc.element.html-to-text.helper.wordwrap">
             function <span class="apidocSignatureSpan">html-to-text.helper.</span>wordwrap
             <span class="apidocSignatureSpan">(text, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.html-to-text.html_to_text">module html-to-text.html_to_text</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.html_to_text.fromFile">
+            function <span class="apidocSignatureSpan">html-to-text.html_to_text.</span>fromFile
+            <span class="apidocSignatureSpan">(file, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-text.html_to_text.fromString">
+            function <span class="apidocSignatureSpan">html-to-text.html_to_text.</span>fromString
+            <span class="apidocSignatureSpan">(str, options)</span>
             </a>
 
         </li>
@@ -322,6 +324,8 @@ console.log(text);
 
 
 
+
+
 </div>
 
 <div class="apidocSectionDiv">
@@ -369,7 +373,23 @@ console.log(text);
 
   return formatText({ data: result || href, trimLeadingSpace: elem.trimLeadingSpace }, options);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+case 'img':
+  result += format.image(elem, options);
+  break;
+case 'a':
+  // Inline element needs its leading space to be trimmed if `result`
+  // currently ends with whitespace
+  elem.trimLeadingSpace = whiteSpaceRegex.test(result);
+  result += format.<span class="apidocCodeKeywordSpan">anchor</span>(elem, walk, options);
+  break;
+case 'p':
+  result += format.paragraph(elem, walk, options);
+  break;
+case 'h1':
+case 'h2':
+case 'h3':
+...</pre></li>
     </ul>
 
 
@@ -388,7 +408,23 @@ console.log(text);
   }
   return heading + '\n';
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  break;
+case 'h1':
+case 'h2':
+case 'h3':
+case 'h4':
+case 'h5':
+case 'h6':
+  result += format.<span class="apidocCodeKeywordSpan">heading</span>(elem, walk, options);
+  break;
+case 'br':
+  result += format.lineBreak(elem, walk, options);
+  break;
+case 'hr':
+  result += format.horizontalLine(elem, walk, options);
+  break;
+...</pre></li>
     </ul>
 
 
@@ -403,7 +439,23 @@ console.log(text);
     <li>description and source-code<pre class="apidocCodePre">function formatHorizontalLine(elem, fn, options) {
   return '\n' + _s.repeat('-', options.wordwrap) + '\n\n';
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+case 'h6':
+  result += format.heading(elem, walk, options);
+  break;
+case 'br':
+  result += format.lineBreak(elem, walk, options);
+  break;
+case 'hr':
+  result += format.<span class="apidocCodeKeywordSpan">horizontalLine</span>(elem, walk, options);
+  break;
+case 'ul':
+  result += format.unorderedList(elem, walk, options);
+  break;
+case 'ol':
+  result += format.orderedList(elem, walk, options);
+  break;
+...</pre></li>
     </ul>
 
 
@@ -432,7 +484,23 @@ console.log(text);
   }
   return (result);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+var whiteSpaceRegex = /\s$/;
+_.each(dom, function(elem) {
+  switch(elem.type) {
+    case 'tag':
+      switch(elem.name.toLowerCase()) {
+        case 'img':
+          result += format.<span class="apidocCodeKeywordSpan">image</span>(elem, options);
+          break;
+        case 'a':
+          // Inline element needs its leading space to be trimmed if `result`
+          // currently ends with whitespace
+          elem.trimLeadingSpace = whiteSpaceRegex.test(result);
+          result += format.anchor(elem, walk, options);
+          break;
+...</pre></li>
     </ul>
 
 
@@ -447,7 +515,23 @@ console.log(text);
     <li>description and source-code<pre class="apidocCodePre">function formatLineBreak(elem, fn, options) {
   return '\n' + fn(elem.children, options);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+case 'h3':
+case 'h4':
+case 'h5':
+case 'h6':
+  result += format.heading(elem, walk, options);
+  break;
+case 'br':
+  result += format.<span class="apidocCodeKeywordSpan">lineBreak</span>(elem, walk, options);
+  break;
+case 'hr':
+  result += format.horizontalLine(elem, walk, options);
+  break;
+case 'ul':
+  result += format.unorderedList(elem, walk, options);
+  break;
+...</pre></li>
     </ul>
 
 
@@ -514,7 +598,23 @@ console.log(text);
   }
   return result + '\n';
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+case 'hr':
+  result += format.horizontalLine(elem, walk, options);
+  break;
+case 'ul':
+  result += format.unorderedList(elem, walk, options);
+  break;
+case 'ol':
+  result += format.<span class="apidocCodeKeywordSpan">orderedList</span>(elem, walk, options);
+  break;
+case 'pre':
+  var newOptions = _(options).clone();
+  newOptions.isInPre = true;
+  result += format.paragraph(elem, walk, newOptions);
+  break;
+case 'table':
+...</pre></li>
     </ul>
 
 
@@ -534,7 +634,23 @@ console.log(text);
     return paragraph + '\n\n'
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+case 'a':
+  // Inline element needs its leading space to be trimmed if `result`
+  // currently ends with whitespace
+  elem.trimLeadingSpace = whiteSpaceRegex.test(result);
+  result += format.anchor(elem, walk, options);
+  break;
+case 'p':
+  result += format.<span class="apidocCodeKeywordSpan">paragraph</span>(elem, walk, options);
+  break;
+case 'h1':
+case 'h2':
+case 'h3':
+case 'h4':
+case 'h5':
+case 'h6':
+...</pre></li>
     </ul>
 
 
@@ -599,7 +715,23 @@ console.log(text);
     }
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    case 'pre':
+      var newOptions = _(options).clone();
+      newOptions.isInPre = true;
+      result += format.paragraph(elem, walk, newOptions);
+      break;
+    case 'table':
+      result = containsTable(elem.attribs, options.tables)
+        ? result + format.<span class="apidocCodeKeywordSpan">table</span>(elem, walk, options)
+        : walk(elem.children || [], options, result);
+      break;
+    default:
+      result = walk(elem.children || [], options, result);
+  }
+  break;
+case 'text':
+...</pre></li>
     </ul>
 
 
@@ -621,7 +753,23 @@ console.log(text);
     return helper.wordwrap(elem.trimLeadingSpace ? _s.lstrip(text) : text, options);
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    }
+    break;
+  case 'text':
+    if (elem.data !== '\r\n') {
+      // Text needs its leading space to be trimmed if `result`
+      // currently ends with whitespace
+      elem.trimLeadingSpace = whiteSpaceRegex.test(result);
+      result += format.<span class="apidocCodeKeywordSpan">text</span>(elem, options);
+    }
+    break;
+  default:
+    if (!_.include(SKIP_TYPES, elem.type)) {
+      result = walk(elem.children || [], options, result);
+    }
+}
+...</pre></li>
     </ul>
 
 
@@ -643,83 +791,22 @@ console.log(text);
   });
   return result + '\n';
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.html-to-text.fromFile" id="apidoc.module.html-to-text.fromFile">module html-to-text.fromFile</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.html-to-text.fromFile.fromFile" id="apidoc.element.html-to-text.fromFile.fromFile">
-        function <span class="apidocSignatureSpan">html-to-text.</span>fromFile
-        <span class="apidocSignatureSpan">(file, options, callback)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">fromFile = function (file, options, callback) {
-  if (!callback) {
-    callback = options;
-    options = {};
-  }
-  fs.readFile(file, 'utf8', function (err, str) {
-    if (err) return callback(err);
-    return callback(null, htmlToText(str, options));
-  });
-}</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-
-## Usage
-You can read from a file via:
-
-```javascript
-var htmlToText = require('html-to-text');
-
-htmlToText.<span class="apidocCodeKeywordSpan">fromFile</span>(path.join(__dirname, 'test.html'), {
-	tables: ['#invoice', '.address']
-}, (err, text) =&gt; {
-	if (err) return console.error(err);
-	console.log(text);
-});
-```
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.html-to-text.fromString" id="apidoc.module.html-to-text.fromString">module html-to-text.fromString</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.html-to-text.fromString.fromString" id="apidoc.element.html-to-text.fromString.fromString">
-        function <span class="apidocSignatureSpan">html-to-text.</span>fromString
-        <span class="apidocSignatureSpan">(str, options)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">fromString = function (str, options) {
-  return htmlToText(str, options || {});
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-```
-
-or directly from a string:
-
-```javascript
-var htmlToText = require('html-to-text');
-
-var text = htmlToText.<span class="apidocCodeKeywordSpan">fromString</span>('&lt;h1&gt;Hello World&lt;/h1&gt;', {
-	wordwrap: 130
-});
-console.log(text);
-```
-
-### Options:
+case 'br':
+  result += format.lineBreak(elem, walk, options);
+  break;
+case 'hr':
+  result += format.horizontalLine(elem, walk, options);
+  break;
+case 'ul':
+  result += format.<span class="apidocCodeKeywordSpan">unorderedList</span>(elem, walk, options);
+  break;
+case 'ol':
+  result += format.orderedList(elem, walk, options);
+  break;
+case 'pre':
+  var newOptions = _(options).clone();
+  newOptions.isInPre = true;
 ...</pre></li>
     </ul>
 
@@ -785,7 +872,23 @@ var text = '';
 
   return splitTag;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+return _s.strip(result);
+}
+
+function filterBody(dom, options, baseElement) {
+var result = null;
+
+var splitTag = helper.<span class="apidocCodeKeywordSpan">splitCssSearchTag</span>(baseElement);
+
+function walk(dom) {
+  if (result) return;
+  _.each(dom, function(elem) {
+    if (result) return;
+    if (elem.name === splitTag.element) {
+      var documentClasses = elem.attribs &amp;&amp; elem.attribs.class ? elem.attribs.class.split(" ") : [];
+...</pre></li>
     </ul>
 
 
@@ -873,6 +976,78 @@ function formatImage(elem, options) {
 if (options.ignoreImage) {
   return '';
 }
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.html-to-text.html_to_text" id="apidoc.module.html-to-text.html_to_text">module html-to-text.html_to_text</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.html_to_text.fromFile" id="apidoc.element.html-to-text.html_to_text.fromFile">
+        function <span class="apidocSignatureSpan">html-to-text.html_to_text.</span>fromFile
+        <span class="apidocSignatureSpan">(file, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fromFile = function (file, options, callback) {
+  if (!callback) {
+    callback = options;
+    options = {};
+  }
+  fs.readFile(file, 'utf8', function (err, str) {
+    if (err) return callback(err);
+    return callback(null, htmlToText(str, options));
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## Usage
+You can read from a file via:
+
+```javascript
+var htmlToText = require('html-to-text');
+
+htmlToText.<span class="apidocCodeKeywordSpan">fromFile</span>(path.join(__dirname, 'test.html'), {
+	tables: ['#invoice', '.address']
+}, (err, text) =&gt; {
+	if (err) return console.error(err);
+	console.log(text);
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-text.html_to_text.fromString" id="apidoc.element.html-to-text.html_to_text.fromString">
+        function <span class="apidocSignatureSpan">html-to-text.html_to_text.</span>fromString
+        <span class="apidocSignatureSpan">(str, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fromString = function (str, options) {
+  return htmlToText(str, options || {});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+or directly from a string:
+
+```javascript
+var htmlToText = require('html-to-text');
+
+var text = htmlToText.<span class="apidocCodeKeywordSpan">fromString</span>('&lt;h1&gt;Hello World&lt;/h1&gt;', {
+	wordwrap: 130
+});
+console.log(text);
+```
+
+### Options:
 ...</pre></li>
     </ul>
 
